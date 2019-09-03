@@ -1,0 +1,14 @@
+<!-- app licaion layout here-->
+
+<mat-toolbar class="example-header">MIND MAP for FRONT END DEVELOPER</mat-toolbar>
+
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened class="example-sidenav" position="end">
+      Sidenav
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      Main Content
+      <p><button mat-button (click)="sidenav.toggle()">Toggle</button></p>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
