@@ -1,0 +1,24 @@
+.example-tree-invisible {
+    display: none;
+  }
+  
+  .example-tree ul,
+  .example-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+    padding-inline-start: 0px;
+  }
+
+  mat-nested-tree-node li{
+    display: flex;
+    flex-direction: row;
+  }
+
+@import '~@angular/material/theming';
+.mat-tree-node {
+    flex:none;
+}
+
+
+/*https://stackblitz.com/edit/material-tree-nested*/

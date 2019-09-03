@@ -7,6 +7,8 @@ import { MindMapComponent } from './mind-map/mind-map.component';
 import { NodeDetailComponent } from './node-detail/node-detail.component';
 import { MaterialModule } from './material.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { FormsModule } from '@angular/forms';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     BrowserModule,
     BrowserAnimationsModule,
     DragDropModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    MarkdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
