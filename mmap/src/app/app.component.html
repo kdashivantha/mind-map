@@ -1,12 +1,6 @@
-<!-- app licaion layout here-->
-<ng-container fullscreen>
+  <app-header></app-header>
 
-<mat-toolbar>MIND MAP for FRONT END DEVELOPER
-
-<app-header></app-header>
-</mat-toolbar>
-
-  <mat-sidenav-container>
+  <mat-sidenav-container fxFlex>
     <mat-sidenav #sidenav mode="side" opened position="end">
       <app-node-detail></app-node-detail>
     </mat-sidenav>
@@ -17,5 +11,3 @@
       <app-mind-map></app-mind-map>
     </mat-sidenav-content>
   </mat-sidenav-container>
-
-</ng-container>

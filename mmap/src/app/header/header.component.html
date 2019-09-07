@@ -1,7 +1,17 @@
 
-  <button type="button" name="button" (click)="onBackupData()">Back Up Data</button>
-
-  <div>
-    <input #fileinput type="file" (change)="onFileUpload($event)" hidden>
-    <button type="button" name="button" (click)="fileinput.click()">Upload</button>
-  </div>
+<mat-toolbar color="primary">
+    <div>
+      <a>MIND MAP</a>
+    </div>
+    <div fxFlex fxLayout fxLayoutAlign="flex-end">
+      <div fxLayout fxLayoutGap="10px">
+          <button mat-icon-button (click)="fileinput.click()">
+            <mat-icon>cloud_upload</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onBackupData()">
+            <mat-icon>cloud_download</mat-icon>
+          </button>
+          <input #fileinput type="file" (change)="onFileUpload($event)" hidden>
+      </div>
+     </div>
+</mat-toolbar>
