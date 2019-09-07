@@ -8,9 +8,11 @@ import { NodeDetailComponent } from './node-detail/node-detail.component';
 import { MaterialModule } from './material.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
-import { MarkdownModule } from 'ngx-markdown';
 import { HeaderComponent } from './header/header.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { NgxMdModule } from 'ngx-md';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MaterialModule,
     FormsModule,
     FlexLayoutModule,
-    MarkdownModule.forRoot()
+    HttpClientModule,
+    NgxMdModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

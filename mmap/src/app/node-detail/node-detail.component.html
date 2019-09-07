@@ -1,5 +1,5 @@
 <div class="content-right" #detailContent fxFlex fxLayout="row">
-
+    <!--resizer handler-->
     <div 
         class="resizer-xaxis"
         cdkDrag 
@@ -14,9 +14,51 @@
         </div>
     </div>
 
-    <div class="content">    
-            <markdown class="variable-binding" [data]="markdown"></markdown>
-    </div>
+    <!--main content goes here-->
+    <div class="content" fxLayout="column">
+
+        <div fxLayout fxLayoutAlign="flex-end" class="action-items">
+            <div fxLayout fxLayoutGap="10px">
+                <button mat-icon-button color="primary" 
+                (click)="onEdit()"
+                *ngIf="!EditMode">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="primary" 
+                (click)="onSave()"
+                *ngIf="EditMode">
+                    <mat-icon>save</mat-icon>
+                </button>
+                <button mat-icon-button color="primary" 
+                (click)="onCancel()"
+                *ngIf="EditMode">
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <div class="editor"
+            fxLayout="row"
+            fxLayoutAlign="center"
+            fxLayoutGap="20px"
+            fxFlex>
+
+            <ng-container *ngIf="EditMode; else viewmode">
+                    <div  fxFlex="50%">
+                        <textarea [(ngModel)]="markdown" class="notes"></textarea>
+                    </div>
+                    <div  fxFlex="50%" class="md-container">
+                        <ngx-md [data]="markdown"></ngx-md>
+                    </div> 
+            </ng-container>
+            <ng-template #viewmode>
+                    <div  fxFlex class="md-container">
+                        <ngx-md [data]="markdown"></ngx-md>
+                    </div>
+            </ng-template>
+
+              
+        </div>
 
 </div>
 

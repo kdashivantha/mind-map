@@ -1,5 +1,6 @@
 import { Component, OnInit, NgZone, Renderer2, ElementRef, ViewChild } from '@angular/core';
 import { CdkDragMove, CdkDragEnd } from '@angular/cdk/drag-drop';
+import * as prism from 'prismjs';
 
 @Component({
   selector: 'app-node-detail',
@@ -8,17 +9,36 @@ import { CdkDragMove, CdkDragEnd } from '@angular/cdk/drag-drop';
 })
 export class NodeDetailComponent implements OnInit {
 
+  private editMode:boolean = false;
+
   constructor(
     private ngZone: NgZone,
     private renderer: Renderer2) { }
-
-  //https://jfcere.github.io/ngx-markdown/
   
   ngOnInit() {
   }
 
-  @ViewChild("detailContent", { static: false }) DetailContainer: ElementRef;
+  public get EditMode():boolean{
+    return this.editMode;
+  }
 
+  public onEdit(){
+    this.editMode = true;
+  }
+  public onSave(){
+    this.editMode = false;
+  }
+  public onCancel(){
+    this.editMode = false;
+  }
+
+
+
+
+
+
+
+  @ViewChild("detailContent", { static: false }) DetailContainer: ElementRef;
   /**
    * drag resizer
    */
@@ -50,20 +70,25 @@ export class NodeDetailComponent implements OnInit {
 
 
   markdown = `## Markdown __rulez__!
----
-
-### Syntax highlight
-\`\`\`typescript
-const language = 'typescript';
-\`\`\`
-
-### Lists
-1. Ordered list
-2. Another bullet point
-  - Unordered list
-  - Another unordered bullet point
-
-### Blockquote
-> Blockquote to the max`;
+  ---
+  
+  ### Syntax highlight
+  \`\`\`typescript
+  const language = 'typescript';
+  \`\`\`
+  
+  \`\`\`javascript
+  var s = "JavaScript syntax highlighting";
+  alert(s);
+  \`\`\`
+  
+  ### Lists
+  1. Ordered list
+  2. Another bullet point
+    - Unordered list
+    - Another unordered bullet point
+  
+  ### Blockquote
+  > Blockquote to the max`;
 
 }
