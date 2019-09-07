@@ -1,8 +1,8 @@
   <app-header></app-header>
 
-  <mat-sidenav-container fxFlex>
+  <mat-sidenav-container fxFlex #dragcontainerbound>
     <mat-sidenav #sidenav mode="side" opened position="end">
-      <app-node-detail></app-node-detail>
+      <app-node-detail fxFlex></app-node-detail>
     </mat-sidenav>
 
     <mat-sidenav-content>

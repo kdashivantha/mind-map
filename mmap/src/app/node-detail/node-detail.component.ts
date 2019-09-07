@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone, Renderer2, ElementRef, ViewChild } from '@angular/core';
+import { CdkDragMove, CdkDragEnd } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-node-detail',
@@ -7,12 +8,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NodeDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private ngZone: NgZone,
+    private renderer: Renderer2) { }
 
   //https://jfcere.github.io/ngx-markdown/
   
   ngOnInit() {
   }
+
+  @ViewChild("detailContent", { static: false }) DetailContainer: ElementRef;
+
+  /**
+   * drag resizer
+   */
+  private DetailContainerPreviousPositionX:number = 0;
+  public DetailContainerFreeDragPosition = {x: 0, y: 0};
+  /**
+   * ListView Container resize 
+   * @param  {CdkDragMove} e
+   */
+  public onResizeDetailContainer(e: CdkDragMove) {
+      this.ngZone.runOutsideAngular(() => {
+
+      const ListViewContainerRect = this.DetailContainer.nativeElement.getBoundingClientRect();
+      let s= e.source.getFreeDragPosition();
+      let diff = s.x - this.DetailContainerPreviousPositionX;
+
+      this.renderer.setStyle(this.DetailContainer.nativeElement, 'width', `${ListViewContainerRect.width-diff}px`);
+
+      this.DetailContainerFreeDragPosition = {x: 0, y: 0};
+      this.DetailContainerPreviousPositionX = s.x;
+
+      });
+  }
+  public onResizeDetailContainerDragEnded(e:CdkDragEnd){
+      this.DetailContainerPreviousPositionX = 0;
+  }
+
+
+
 
   markdown = `## Markdown __rulez__!
 ---

@@ -1,0 +1,25 @@
+.resizer-xaxis{
+    width: 12px;
+    height: 100%;
+    cursor: pointer;
+    flex: none;
+
+    .resizer__icon{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 24px;
+        transform: translateX(-50%) translateY(-50%);
+        fill:#666;
+    }
+}
+
+.content-right{
+    min-width: 320px;
+    overflow: hidden;
+    .content{
+        flex:1;
+        padding:15px;
+        overflow-y: auto;
+    }
+}
