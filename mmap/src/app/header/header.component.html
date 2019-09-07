@@ -1,0 +1,7 @@
+
+  <button type="button" name="button" (click)="onBackupData()">Back Up Data</button>
+
+  <div>
+    <input #fileinput type="file" (change)="onFileUpload($event)" hidden>
+    <button type="button" name="button" (click)="fileinput.click()">Upload</button>
+  </div>

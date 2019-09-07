@@ -63,4 +63,9 @@ export class MindMapComponent implements OnInit {
   //https://www.npmjs.com/package/leader-line
   //sample
   //https://stackblitz.com/edit/angular-woohoo-leader-line-aun2bx
+
+
+  //markdown editor
+  //https://codepen.io/cusx/pen/mJNKre
+  //https://github.com/dimpu/ngx-md
 }
