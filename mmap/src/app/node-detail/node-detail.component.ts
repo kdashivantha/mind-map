@@ -89,6 +89,9 @@ export class NodeDetailComponent implements OnInit {
     - Another unordered bullet point
   
   ### Blockquote
-  > Blockquote to the max`;
+  > Blockquote to the max
+  
+  [https://dimpu.github.io/ngx-md/](https://dimpu.github.io/ngx-md/)
+  `;
 
 }

@@ -1,3 +1,9 @@
+@import '~@angular/material/theming';
+.mat-tree-node {
+    flex:none;
+}
+
+
 .example-tree-invisible {
     display: none;
   }
@@ -15,10 +21,32 @@
     flex-direction: row;
   }
 
-@import '~@angular/material/theming';
-.mat-tree-node {
-    flex:none;
-}
+  .mat-tree-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 0px 10px;
+    margin: 5px;
+    width: 200px;
+    box-shadow: 1px 2px 0px 0px rgba(9, 9, 9, 0.2);
+    cursor: pointer;
+    position: relative;
+
+    .options{
+      display: none;
+    }
+  }
+  .mat-tree-item:hover{
+    .options{
+      display: block;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+    }
+  }
+  .mat-tree-item--selected{
+    background-color: #3f51b5;
+    color: #FFF;
+  }
 
 
 /*https://stackblitz.com/edit/material-tree-nested*/

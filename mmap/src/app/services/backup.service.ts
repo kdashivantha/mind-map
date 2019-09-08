@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',
@@ -17,7 +18,7 @@ export class BackupService {
      * @param data 
      */
     public WriteToLocalStorage(data:any){
-        this.localStorage.setItem(this._dbKey, data).subscribe(() => {});
+        this.localStorage.setItem(this._dbKey, JSON.stringify(data)).subscribe(() => {});
     }
 
     /**
@@ -25,7 +26,9 @@ export class BackupService {
      * @param key 
      */
     public ReadFromLocalStorage():Observable<any>{
-        return this.localStorage.getItem(this._dbKey);
+        return this.localStorage.getItem(this._dbKey).pipe(
+            map((data:string)=> JSON.parse(data))
+        );
     }
 
 

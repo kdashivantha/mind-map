@@ -24,7 +24,8 @@ export class HeaderComponent implements OnInit {
   private DownloadDataFile(){
     var sub = this.backupService.ReadFromLocalStorage().subscribe(
         (textToSave)=>{
-            var textToSaveAsBlob = new Blob([JSON.parse(textToSave)], {type:"application/json"});
+          debugger;
+            var textToSaveAsBlob = new Blob([JSON.stringify(textToSave,undefined,2)], {type:"application/json"});
             var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
             var fileNameToSaveAs = `mindmap-${new Date().getTime()}.json`;
             var downloadLink = document.createElement("a");
@@ -45,7 +46,8 @@ export class HeaderComponent implements OnInit {
         var file:File = inputValue.files[0];
         var myReader:FileReader = new FileReader();
         myReader.onloadend = (e) => {
-            this.backupService.WriteToLocalStorage(JSON.stringify(myReader.result));
+          debugger;
+            this.backupService.WriteToLocalStorage(JSON.parse(<string>myReader.result));
         }
         myReader.readAsText(file);
     }
